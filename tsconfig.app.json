@@ -5,11 +5,10 @@
     "outDir": "./out-tsc/app",
     "types": []
   },
-  "files": [
-    "src/main.ts",
-    "src/polyfills.ts"
-  ],
-  "include": [
-    "src/**/*.d.ts"
-  ]
+  "files": ["src/main.ts", "src/polyfills.ts"],
+  "include": ["src/**/*.d.ts"],
+  "rules": {
+    "directive-selector ": [true, " attribute ", "dev ", " camelCase "],
+    "component-selector ": [true, " element ", "dev", " kebab-case "]
+  }
 }
