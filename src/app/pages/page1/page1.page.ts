@@ -7,6 +7,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Page1Page implements OnInit {
   helloWorld = 'Hello World';
+  students = [
+    {
+      name: ' Eliane ',
+      idade: 28,
+    },
+    {
+      name: ' João',
+      idade: 28,
+    },
+    {
+      name: 'Pedro',
+      idade: 26,
+    },
+    {
+      name: 'Zé',
+      idade: 26,
+    },
+    {
+      name: 'chico',
+      idade: 26,
+    },
+  ];
   constructor() {}
 
   ngOnInit(): void {}

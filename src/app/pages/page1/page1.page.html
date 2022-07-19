@@ -1,1 +1,12 @@
 <p>{{helloWorld}}</p>
+<p appHighlight>Highlight me !</p>
+<ul class="list-group">
+  <li
+    class="list-group-item"
+    aria-current="true"
+    *ngFor="let st
+    of students"
+  >
+    {{ st.name }}
+  </li>
+</ul>
