@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastService } from 'src/app/services/toast-service';
 
 @Component({
   selector: 'page1',
@@ -6,10 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page1.page.scss'],
 })
 export class Page1Page implements OnInit {
-  helloWorld = 'Hello World';
   students = [
     {
-      name: ' Eliane ',
+      name: 'Eliane',
       idade: 28,
     },
     {
@@ -29,7 +30,21 @@ export class Page1Page implements OnInit {
       idade: 26,
     },
   ];
-  constructor() {}
+  constructor(private modalService: NgbModal, public toastService: ToastService) {}
 
   ngOnInit(): void {}
+
+  open(content: any) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then();
+  }
+  addItem() {}
+
+  editItem(student: { name: string; idade: number }) {}
+  removeItem(student: { name: string; idade: number }) {
+    const index = this.students.indexOf(student);
+    if (index > -1) {
+      this.students.splice(index, 1);
+      this.toastService.show('Item foi removido');
+    }
+  }
 }

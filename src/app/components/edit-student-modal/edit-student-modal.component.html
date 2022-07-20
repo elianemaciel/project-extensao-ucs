@@ -1,0 +1,31 @@
+<ng-template #content2 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Adicionar itens</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <label for="dateOfBirth">Nome:</label>
+        <div class="input-group">
+          <input class="form-control form-control-lg" type="text" placeholder="Nome Social" [ngModel]="student.name" />
+        </div>
+        <div class="mb-3">
+          <label for="idade">Idade:</label>
+          <div class="input-group">
+            <input
+              name="idade"
+              class="form-control form-control-lg"
+              type="text"
+              placeholder="Ex: 10"
+              [ngModel]="student.idade"
+            />
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="addItem()">Salvar</button>
+  </div>
+</ng-template>
