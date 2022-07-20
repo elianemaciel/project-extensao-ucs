@@ -1,5 +1,5 @@
 <div class="container">
-  <button type="button" (click)="open(content2)" class="btn btn-primary">Adicionar Itens</button>
+  <button type="button" (click)="openModal = true" class="btn btn-primary">Adicionar Itens</button>
   <ul class="list-group">
     <li class="list-group-item list-students" aria-current="true" *ngFor="let st of students">
       {{ st.name }} {{ st.idade }}
@@ -9,4 +9,4 @@
   </ul>
 </div>
 
-<app-edit-student-modal [open]="false"></app-edit-student-modal>
+<app-edit-student-modal [open]="openModal" (eventAddItem)="addItem($event)"></app-edit-student-modal>

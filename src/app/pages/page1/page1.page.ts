@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastService } from 'src/app/services/toast-service';
 
 @Component({
@@ -30,14 +29,14 @@ export class Page1Page implements OnInit {
       idade: 26,
     },
   ];
-  constructor(private modalService: NgbModal, public toastService: ToastService) {}
+  openModal = false;
+  constructor(public toastService: ToastService) {}
 
   ngOnInit(): void {}
 
-  open(content: any) {
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then();
+  addItem(event: { name: string; idade: number }) {
+    this.students.push(event);
   }
-  addItem() {}
 
   editItem(student: { name: string; idade: number }) {}
   removeItem(student: { name: string; idade: number }) {
