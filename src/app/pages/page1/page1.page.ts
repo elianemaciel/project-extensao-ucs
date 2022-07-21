@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Character } from 'src/app/models/character';
+import { ApiRestService } from 'src/app/services/api-rest.service';
 import { ToastService } from 'src/app/services/toast-service';
 
 @Component({
@@ -7,42 +9,30 @@ import { ToastService } from 'src/app/services/toast-service';
   styleUrls: ['./page1.page.scss'],
 })
 export class Page1Page implements OnInit {
-  students = [
-    {
-      name: 'Eliane',
-      idade: 28,
-    },
-    {
-      name: ' João',
-      idade: 28,
-    },
-    {
-      name: 'Pedro',
-      idade: 26,
-    },
-    {
-      name: 'Zé',
-      idade: 26,
-    },
-    {
-      name: 'chico',
-      idade: 26,
-    },
-  ];
+  characters: Array<Character> = [];
   openModal = false;
-  constructor(public toastService: ToastService) {}
+  video = 'https://www.youtube.com/embed/tPOMG0D57S0';
+  constructor(public toastService: ToastService, private apiRestService: ApiRestService) {}
 
-  ngOnInit(): void {}
-
-  addItem(event: { name: string; idade: number }) {
-    this.students.push(event);
+  async ngOnInit(): Promise<void> {
+    const resp = await this.apiRestService.getListCharacter();
+    console.log(resp);
+    this.characters = resp.results as Array<Character>;
   }
 
-  editItem(student: { name: string; idade: number }) {}
-  removeItem(student: { name: string; idade: number }) {
-    const index = this.students.indexOf(student);
+  async addItem(event: Character) {
+    console.log('ddsda');
+    const resp = await this.apiRestService.postExemplo();
+    console.log(resp);
+    this.characters.push(event);
+  }
+
+  editItem(character: Character) {}
+
+  removeItem(character: Character) {
+    const index = this.characters.indexOf(character);
     if (index > -1) {
-      this.students.splice(index, 1);
+      this.characters.splice(index, 1);
       this.toastService.show('Item foi removido');
     }
   }
